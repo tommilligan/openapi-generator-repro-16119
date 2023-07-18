@@ -1,0 +1,88 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "double-option-hashmap",
+    "description": "",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://example.org/api"
+    }
+  ],
+  "paths": {
+    "/api/_private/permissions/derived": {
+      "post": {
+        "tags": ["Permissions"],
+        "summary": "Get the derived permissions for a user.",
+        "description": "Get the derived permissions for a user.",
+        "operationId": "getDerivedPermission",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Get the derived permissions for a user.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatasetSummary"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "security": [
+          {
+            "APIKeyHeader": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TriggerExceptionsSummary": {
+        "properties": {
+          "display_name": {
+            "type": "string",
+            "title": "Display Name"
+          },
+          "types": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Types"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": ["display_name", "types"],
+        "title": "TriggerExceptionsSummary"
+      },
+      "DatasetSummary": {
+        "properties": {
+          "trigger_exceptions": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/TriggerExceptionsSummary"
+            },
+            "type": "object",
+            "title": "Trigger Exceptions",
+            "description": "Trigger exceptions"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [],
+        "title": "DatasetSummary"
+      }
+    },
+    "securitySchemes": {
+      "APIKeyHeader": {
+        "type": "apiKey",
+        "name": "authorization",
+        "in": "header"
+      }
+    }
+  }
+}
