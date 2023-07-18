@@ -34,14 +34,10 @@
   "components": {
     "schemas": {
       "Foo": {
-        "properties": {
-          "bar": {
-            "type": "string"
-          }
-        },
+        "properties": {},
         "additionalProperties": false,
         "type": "object",
-        "required": ["bar"]
+        "required": []
       },
       "Repro": {
         "properties": {
