@@ -11,77 +11,50 @@
     }
   ],
   "paths": {
-    "/api/_private/permissions/derived": {
+    "/repro": {
       "post": {
-        "tags": ["Permissions"],
-        "summary": "Get the derived permissions for a user.",
-        "description": "Get the derived permissions for a user.",
-        "operationId": "getDerivedPermission",
+        "operationId": "repro",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "Get the derived permissions for a user.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DatasetSummary"
+                  "$ref": "#/components/schemas/Repro"
                 }
               }
-            }
+            },
+            "description": "Reproduce bug in Rust generation code."
           }
         },
-        "deprecated": false,
-        "security": [
-          {
-            "APIKeyHeader": []
-          }
-        ]
+        "deprecated": false
       }
     }
   },
   "components": {
     "schemas": {
-      "TriggerExceptionsSummary": {
+      "Foo": {
         "properties": {
-          "display_name": {
-            "type": "string",
-            "title": "Display Name"
-          },
-          "types": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "title": "Types"
+          "bar": {
+            "type": "string"
           }
         },
         "additionalProperties": false,
         "type": "object",
-        "required": ["display_name", "types"],
-        "title": "TriggerExceptionsSummary"
+        "required": ["bar"]
       },
-      "DatasetSummary": {
+      "Repro": {
         "properties": {
-          "trigger_exceptions": {
+          "foos_by_id": {
             "additionalProperties": {
-              "$ref": "#/components/schemas/TriggerExceptionsSummary"
+              "$ref": "#/components/schemas/Foo"
             },
-            "type": "object",
-            "title": "Trigger Exceptions",
-            "description": "Trigger exceptions"
+            "type": "object"
           }
         },
         "additionalProperties": false,
         "type": "object",
-        "required": [],
-        "title": "DatasetSummary"
-      }
-    },
-    "securitySchemes": {
-      "APIKeyHeader": {
-        "type": "apiKey",
-        "name": "authorization",
-        "in": "header"
+        "required": []
       }
     }
   }
