@@ -20,7 +20,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Repro"
+                  "$ref": "#/components/schemas/Parent"
                 }
               }
             },
@@ -33,22 +33,14 @@
   },
   "components": {
     "schemas": {
-      "Foo": {
-        "properties": {},
-        "additionalProperties": false,
-        "type": "object",
-        "required": []
-      },
-      "FoosById": {
-        "additionalProperties": {
-          "$ref": "#/components/schemas/Foo"
-        },
+      "Child": {
+        "additionalProperties": {},
         "type": "object"
       },
-      "Repro": {
+      "Parent": {
         "properties": {
-          "foos_by_id": {
-            "$ref": "#/components/schemas/FoosById"
+          "child": {
+            "$ref": "#/components/schemas/Child"
           }
         },
         "additionalProperties": false,
