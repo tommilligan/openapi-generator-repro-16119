@@ -39,13 +39,16 @@
         "type": "object",
         "required": []
       },
+      "FoosById": {
+        "additionalProperties": {
+          "$ref": "#/components/schemas/Foo"
+        },
+        "type": "object"
+      },
       "Repro": {
         "properties": {
           "foos_by_id": {
-            "additionalProperties": {
-              "$ref": "#/components/schemas/Foo"
-            },
-            "type": "object"
+            "$ref": "#/components/schemas/FoosById"
           }
         },
         "additionalProperties": false,
